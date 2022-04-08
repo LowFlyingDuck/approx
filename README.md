@@ -1,2 +1,0 @@
-# approx
-approximates arbitrary functions
