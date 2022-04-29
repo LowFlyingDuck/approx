@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState,useRef } from 'react'
 
 import s from '../styles/Input.module.css'
@@ -20,7 +21,8 @@ function Input({ randomize, label, secondary, id, special, def, onChange }) {
         />
 
 
-        {special==='random' && <Submit value={ <img src='/assets/shuffle.svg' /> } action={ () => randomize(g => {
+        {special==='random' && typeof randomize === 'function' &&
+        <Submit value={ <img src='/assets/shuffle.svg' /> } action={ () => randomize(g => {
           onChange(g);
           input.current.value = g.join(' ');
           })

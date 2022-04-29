@@ -12,6 +12,9 @@ body {
     --primary: hsl(126, 30%, 40%);
     --secondary: #7A9CCC;
     --secondary-hov: hsl(215, 45%, 50%);
+    --grey: #2d2d2d;
+    --lightgrey: rgb(176, 176, 176);
+    --bg-grey: rgba(228, 228, 228, 0.5);
 
   font-size: 1.2rem;
 }

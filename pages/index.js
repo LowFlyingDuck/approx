@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useReducer } from 'react'
 
 import Head from 'next/head'

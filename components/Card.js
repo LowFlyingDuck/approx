@@ -1,10 +1,8 @@
 import React from 'react'
 
-import Script from 'next/script'
-
 import s from '../styles/Card.module.css'
-import CardLeft from './CardLeft'
-import CardRight from './CardRight'
+import CardLeft from './CardLeft.jsx'
+import CardRight from './CardRight.jsx'
 
 export default function Card({ type, active, onClick, ...props }) {
 

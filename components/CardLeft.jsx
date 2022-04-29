@@ -1,24 +1,26 @@
-import { Input, Submit } from '../components/Input'
+import React from 'react'
+import { Input, Submit } from './Input'
 
 import s from '../styles/Card.module.css'
 
 function randomize(g) {
   g(new Array(4).fill(0)
-  .map(e => ((Math.random()*20)-10).toFixed(5)*1));
+  .map(e => ((Math.random()*20)-10).toFixed(5)));
 }
 
 export default function CardLeft({ setVars, vars, setActive, sketch }) {
   return (
     <>
       <img draggable={false} className={ s.logo } src="/logo.svg" alt="LOGO" />
+      <h1 className={ s.title }>Find roots of any function</h1>
       <Input
         label="Type in a function "
         secondary="(using Symbolic Computation syntax)"
         id="function"
-        def={ vars.func }
+        def={vars.func}
         special="function"
-        onChange={ (v) => setVars({ func: v }) }
-      />
+        onChange={(v) => setVars({ func: v })}
+        randomize={undefined}      />
       <Input
         label="Enter initial guesses "
         secondary="(separated by spaces using . as comma)"
@@ -26,15 +28,17 @@ export default function CardLeft({ setVars, vars, setActive, sketch }) {
         def={ vars.guesses.join(' ') }
         special="random"
         randomize={randomize}
-        onChange={ (g) => setVars({ guesses: typeof g==='string' ? g.split(' ') : g }) }
+        onChange={ (g) => { 
+          let val = typeof g==='string' ? g.split(' ').map(e => parseFloat(e)||0) : g.map(e => parseFloat(e)||0);
+          setVars({ guesses: val });
+        }}
       />
       <Input
         label="Set the accuracy "
         secondary="(1 million by default; up to infinity)"
-        def={ vars.acc }
+        def={vars.acc}
         id="accuracy"
-        onChange={ (a) => setVars({ acc: a }) }
-      />
+        onChange={(a) => setVars({ acc: parseInt(a)||vars.acc })} randomize={undefined} special={undefined}      />
       <Submit action={() => {
         window.setTimeout(() => {
           setActive('right');
