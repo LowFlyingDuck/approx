@@ -47,7 +47,7 @@ export default function CardRight({ vars, setSketch }) {
       for (let i=0;i<vars.acc;i++) {
         let m;
         try {
-          y = f.evaluate({ x:x });
+          y = f.evaluate({ x: x });
           m = df.evaluate({ x: x });
           if (y===NaN || y===-Infinity || y===Infinity) return;
         } catch(err) {
