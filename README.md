@@ -6,13 +6,11 @@ Zum Lösen der Nullstellen verwendet dieses Programm das Newtonverfahren.
 
 <a href="https://de.wikipedia.org/wiki/Newtonverfahren">Newtonverfahren</a>
 
-Das Programm muss hiefür nur mit einem nutzergewählten Wert für x anfangen. Anschließend wird der Anstieg an der Stelle abgeschätzt. Die Tangente, welche an dieser Stelle angelegt wird, muss eine Nullstelle haben.
-
-Falls eine Nullstelle existiert, muss jene als neuer x-Wert festgelegt werden und der Prozess wird wiederholt.
-
+  Das Programm muss hiefür nur mit einem nutzergewählten Wert für x anfangen. Anschließend wird der Anstieg an der Stelle abgeschätzt. Die Tangente, welche an dieser Stelle angelegt wird, muss eine Nullstelle haben.  
+Falls eine Nullstelle existiert, muss jene als neuer x-Wert festgelegt werden und der Prozess wird wiederholt.  
 Falls keine Nullstelle existiert, wird der x-Wert leicht verändert.
 
-Obwohl die obengenannte Methode niemals ein Ergebniss generiert, nähert sich (meistens) der x-Wert immer mehr einer Nullstelle an. Die Wiederholungen können durch einen Genauigkeits-Wert reguliert werden.
+Obwohl die obengenannte Methode niemals ein Ergebniss generiert, nähert sich (meistens) der x-Wert immer mehr einer Nullstelle an. Die Wiederholungen können durch einen Genauigkeits-Wert reguliert werden.  
 Dadurch wird zwar auch ein Ergebniss für y=2 ausgegeben, welche natürlich keine Nullstelle hat, stellt aber kein Problem dar, wenn der Nutzer über diese Tatsache informeirt wird.
 
 Für einen Wert x ist der nächste durch folgende Formel definiert:
@@ -53,5 +51,5 @@ Variablen wie `x`, `vars`, `f` und `df` sind bereits im globalen Namespace vorha
 
 Zuerst wird die Variable y, welche für den Funktionswert am alten x steht definiert. Als nächstes wird eine Schleife gestartet, welche durch die Variable `acc` beschränkt ist (innerhalb des `vars` Objekts). Anschließend wird eine Variable `m` deklariert, welche für den Wert der Ableitung am alten x steht.
 
-Die anschließenden Schritte, y und m festzulegen, sind in einem try-catch-block enthalten, da diese Fehler aufweisen können, falls die Funktion oder Ableitung derselben ungültig ist. Tritt so ein Fehler auf oder der Funktionswert `y` ist nicht gültig, so wird die Funktion beendet und gibt ein `undefined` zurürck. Ansonsten sollte x nach der Schleife zurückgegeben werden. (Im originalen Quelltext wird es zu einer Menge an Lösungen hinzugefügt)
+Die anschließenden Schritte, y und m festzulegen, sind in einem try-catch-block enthalten, da diese Fehler aufweisen können, falls die Funktion oder Ableitung derselben ungültig ist. Tritt so ein Fehler auf oder der Funktionswert `y` ist nicht gültig, so wird die Funktion beendet und gibt ein `undefined` zurürck. Ansonsten sollte x nach der Schleife zurückgegeben werden. (Im originalen Quelltext wird es zu einer Menge an Lösungen hinzugefügt.)
 
