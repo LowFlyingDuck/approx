@@ -26,6 +26,7 @@ export default function CardRight({ vars, setSketch }) {
 
   let [ error, setError ] = useState(null);
   let [ inaccurate, setInaccurate ] = useState(false);
+  let [ drag, setDrag ] = useState([null]);
 
   function findRoots(guesses=vars.guesses) {
     setInaccurate(false);
@@ -91,26 +92,22 @@ export default function CardRight({ vars, setSketch }) {
     translate[0] += e.clientX - dx  ;
     translate[1] += e.clientY - dy;
 
-    sk();
     typeof mouseMove==='function' && mouseMove(e);
+    sk(vars);
   }
-
-  var mouseMove = (e) => {};
 
   function effect() {
     setSketch({sketch: (g) => {
       findRoots(g);
-      sk();
+      sk(vars);
     }});
     canvas.current?.addEventListener('wheel', zoomHandler);
     canvas.current?.addEventListener('mousedown', dragStart);
     canvas.current?.addEventListener('mouseup', dragEnd);
-    canvas.current?.addEventListener('mousemove', (e) => mouseMove(e));
     return () => {
       canvas.current?.removeEventListener('wheel', zoomHandler);
       canvas.current?.removeEventListener('mousedown', dragStart);
       canvas.current?.removeEventListener('mouseup', dragEnd);
-      canvas.current?.removeEventListener('mousemove', (e) => mouseMove(e));
     }
   }
   useEffect(effect, [ vars ]);
@@ -172,6 +169,7 @@ export default function CardRight({ vars, setSketch }) {
         let x = map(i);
         let y;
         try {
+          f = parse(vars.func);
           y = f.evaluate({ x: x });
           setError(null);
         } catch(err) {
@@ -200,31 +198,18 @@ export default function CardRight({ vars, setSketch }) {
         c.closePath();
 
         drawCircle(c, i, j, 5, 'hsl(126, 30%, 50%)', 0);
-      });
 
-      if (!error) mouseMove = e => {
-        var cRect = canvas.current.getBoundingClientRect();
-        var mx = Math.round(e.clientX - cRect.left);
-        var my = Math.round(e.clientY - cRect.top); 
-    
-        let onPoint = false;
-        roots.forEach((x) => {
-          let i = reverseMap(x) + translate[0];
-    
-          if (mx > i-5 && mx < i+5) {
-            onPoint = true;
-            sk();
-            // render a box with root position
-            let text = 'x = ' + x.toPrecision(8);
-            c.font = '18px Inter';
-            let measure = c.measureText(text);
-            c.fillRect(mx-translate[0], my-translate[1]-8-measure.fontBoundingBoxAscent, measure.width+20, measure.fontBoundingBoxAscent+9);
-            c.fillStyle = 'white';
-            c.fillText(text, mx+10-translate[0], my-5-translate[1]);
-          }
-        });
-        !onPoint && sk();
-      }
+        let [dragx, mx, my] = drag;
+        if (dragx === x) {
+          // render a box with root position
+          let text = 'x = ' + x.toPrecision(8);
+          c.font = '18px Inter';
+          let measure = c.measureText(text);
+          c.fillRect(mx-translate[0], my-translate[1]-8-measure.fontBoundingBoxAscent, measure.width+20, measure.fontBoundingBoxAscent+9);
+          c.fillStyle = 'white';
+          c.fillText(text, mx+10-translate[0], my-5-translate[1]);
+        }
+      });
     }
   }
   

@@ -16,9 +16,9 @@ export default function Home() {
   });
 
   let [ vars, setVars ] = useReducer(sR, {
-    func: 'sin(x)',
+    func: 'cos(x)',
     guesses: [],
-    acc: 1000000
+    acc: 10000
   });
 
   const cardProps = (t) => {return {
