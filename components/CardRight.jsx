@@ -60,6 +60,7 @@ export default function CardRight({ vars, setSketch }) {
         }
         x = x - (y / m);
       }
+      if (Math.abs(y) > 0.0001) setInaccurate(true);
       o.add(x);
     });
 
@@ -225,7 +226,6 @@ export default function CardRight({ vars, setSketch }) {
             try {
               y = f.evaluate({ x: e }) || 0;
             } catch(err) { }
-            if (Math.abs(y) >0.0001 && !inaccurate) setInaccurate(true);
             return (
               <li key={e}>
                 <span>{e.toPrecision(8)}</span>
