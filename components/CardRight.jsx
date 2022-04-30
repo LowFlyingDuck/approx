@@ -228,8 +228,8 @@ export default function CardRight({ vars, setSketch }) {
             } catch(err) { }
             return (
               <li key={e}>
-                <span>{e.toPrecision(8)}</span>
-                <span className={ Math.abs(y)>0.0001 ? s.inaccurate : undefined }>f(x) ≈ { y.toPrecision(8) }</span>
+                <span>{e?.toPrecision(8)}</span>
+                <span className={ inaccurate && s.inaccurate }>f(x) ≈ { y?.toPrecision(8) }</span>
               </li> 
             )
           }) : '{ } '}
