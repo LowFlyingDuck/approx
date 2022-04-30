@@ -10,11 +10,7 @@ export default function Card({ type, active, onClick, ...props }) {
 
   return (
     <div
-    style={{
-      position: 'absolute'
-    }}
     onClick={ onClick }
-    tabIndex='0' 
     className={[s.card, s[type], active?s.active:s.inactive].join(' ')}
     >
       {

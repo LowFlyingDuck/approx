@@ -122,8 +122,8 @@ export default function CardRight({ vars, setSketch }) {
   function sk() {
     if (canvas.current) {
       const {width, height} = canvas.current.getBoundingClientRect();
-      canvas.current.width = width;
-      canvas.current.height = height;
+      canvas.current.width = canvas.current.clientWidth;
+      canvas.current.height = canvas.current.clientHeight;
 
       // let c = document.createElement('canvas').getContext('2d');
       let c = canvas.current.getContext('2d');
