@@ -1,0 +1,13 @@
+.cards {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 70vw;
+  height: 70vh;
+  min-width: 1000px;
+  min-height: 500px;
+  max-width: 1200px;
+}
