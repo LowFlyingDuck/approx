@@ -26,26 +26,25 @@ Die Webapp wird mithilfe des Frameworks [NextJS](https://www.nextjs.org) (-> Rea
 Im Quelltext ist der Programmiercode, welcher das Newtonvefahren betrifft in der Datei unter `/components/CardRight.jsx` in der Funktion `findRoots` zu finden. Der Code wird aber auch in dieser Datei enthalten sein und erklärt werden.
 
 Wurde ein initiales x ausgewählt, so schätzt der folgende Code die Nullstellen.  
-<code style="white-space: pre">
-let y = 0;  <br>
-for (let i=0;i<vars.acc;i++) {  <br>
-  let m;  <br>
-  try {  <br>
-    y = f.evaluate({ x: x });  <br>
-    m = df.evaluate({ x: x });  <br>
-    if (y===NaN || y===-Infinity || y===Infinity)  <br>
-      return;  <br>
-  } catch(err) {  <br>
-    return;  <br>
-  }  <br>
-  if (m === 0) {  <br>
-    x += 2;  <br>
-    continue;  <br>
-  }  <br>
-  x = x - (y / m);  <br>
-}  <br>
-return x;<br>
-</code>
+
+    let y = 0;  \n
+    for (let i=0;i<vars.acc;i++) {  
+      let m;  
+      try {  
+        y = f.evaluate({ x: x });  
+        m = df.evaluate({ x: x });  
+        if (y===NaN || y===-Infinity || y===Infinity)  
+          return;  
+      } catch(err) {  
+        return;  
+      }  
+      if (m === 0) {  
+        x += 2;  
+        continue;  
+      }  
+      x = x - (y / m);  
+    }
+    return x;<br>
 
 Variablen wie `x`, `vars`, `f` und `df` sind bereits im globalen Namespace vorhanden. `f` ist die eingegebene Funktion. `df` ist die Ableitungsfunktion von `f`. Innerhalb von `vars` sind Variablen gespeichert, welche die Parameter des Programms enthalten. `x` ist einer von beliebig vielen Werten, die vom Benutzer festgelegt wurden. `return` kann verwendet werden, weil der code innerhalb der Funktion `findRoots` enthalten ist.
 
