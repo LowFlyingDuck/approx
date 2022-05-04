@@ -26,7 +26,7 @@ Die Webapp wird mithilfe des Frameworks [NextJS](https://www.nextjs.org) (-> Rea
 Im Quelltext ist der Programmiercode, welcher das Newtonvefahren betrifft in der Datei unter `/components/CardRight.jsx` in der Funktion `findRoots` zu finden. Der Code wird aber auch in dieser Datei enthalten sein und erklärt werden.
 
 Wurde ein initiales x ausgewählt, so schätzt der folgende Code die Nullstellen.  
-<code>
+<code style="white-space: pre">
 let y = 0;  
 for (let i=0;i<vars.acc;i++) {  
   let m;  
