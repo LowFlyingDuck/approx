@@ -35,7 +35,7 @@ export default function CardLeft({ setVars, vars, setActive, sketch }) {
       />
       <Input
         label="Set the accuracy "
-        secondary="(1 million by default; up to infinity)"
+        secondary="(10 thousand by default; up to infinity)"
         def={vars.acc}
         id="accuracy"
         onChange={(a) => setVars({ acc: parseInt(a)||vars.acc })} randomize={undefined} special={undefined}      />
