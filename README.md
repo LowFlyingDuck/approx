@@ -23,6 +23,8 @@ Dann gilt für `n → ∞` und `n ∈ ℕ`:
 
 <b>f(c(n)) = 0</b>
 
+Welche Nullstelle hiermit ermittelt wird, hängt von c(0) ab, was als Anfangswert definiert wurde.
+
 ## Implementiertung
 
 Die Webapp wird mithilfe des Frameworks [NextJS](https://www.nextjs.org) (-> React.js) geschrieben.
