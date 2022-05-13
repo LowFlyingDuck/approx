@@ -13,11 +13,15 @@ Falls keine Nullstelle existiert, wird der x-Wert leicht verändert.
 Obwohl die obengenannte Methode niemals ein Ergebniss generiert, nähert sich (meistens) der x-Wert immer mehr einer Nullstelle an. Die Wiederholungen können durch einen Genauigkeits-Wert reguliert werden.  
 Dadurch wird zwar auch ein Ergebniss für y=2 ausgegeben, welche natürlich keine Nullstelle hat, stellt aber kein Problem dar, wenn der Nutzer über diese Tatsache informeirt wird.
 
-Für einen Wert x ist der nächste durch folgende Formel definiert:
+Eine Funktion c(n+1) berechnet die Nullstelle der Tangente bei c(n). Dann lautet diese wie folgt:
 
-<b> x[neu] = x[alt] - (f(x) / m); </b>
+<b> c(n+1) = c(n) - ( f(c(n)) / f'(c(n)) ) | n ∈ ℕ</b>
 
-wobei m der Anstieg der Ableitung an der Stelle x[alt] ist und f die ursprüngliche Funktion.
+wobei f(x) die ursprüngliche Funtion ist.
+
+Dann gilt für `n → ∞` und `n ∈ ℕ`:
+
+<b>f(c(n)) = 0</b>
 
 ## Implementiertung
 
@@ -32,12 +36,12 @@ Wurde ein initiales x ausgewählt, so schätzt der folgende Code die Nullstellen
       let m;  
       try {  
         y = f.evaluate({ x: x });  
-        m = df.evaluate({ x: x });  
+        m = df.evaluate({ x: x });
         if (y===NaN || y===-Infinity || y===Infinity)  
           return;  
       } catch(err) {  
         return;  
-      }  
+      }
       if (m === 0) {  
         x += 2;  
         continue;  
